@@ -12,6 +12,18 @@ from .branch import InferenceBranch
 from .residual import Residual_block
 from .wav2vec import Wav2Vec2Encoder
 
+import warnings
+
+def warn_deprecated_model():
+    msg = (
+        "\n"
+        "⚠️  Deprecation Notice\n"
+        "   This model is outdated and no longer maintained.\n"
+        "   ➤ Please use the updated version: lab260/Spectra-AASIST3\n"
+        "   🔗 https://huggingface.co/lab260/Spectra-AASIST3\n"
+    )
+    warnings.warn(msg, category=DeprecationWarning, stacklevel=2)
+
 
 class aasist3(nn.Module, PyTorchModelHubMixin):
     def __init__(self, d_args={
@@ -24,7 +36,7 @@ class aasist3(nn.Module, PyTorchModelHubMixin):
         "temperatures": [2.0, 2.0, 100.0, 100.0],
     }, size=200, w2v_cache_dir="weights/", load_pretrained=True):
         super().__init__()
-
+        warn_deprecated_model()
         self.w2v_encoder = Wav2Vec2Encoder(cache_dir=w2v_cache_dir, load_pretrained=load_pretrained)
         self.bridge = KANLinear(1024, 128)
 
