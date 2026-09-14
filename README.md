@@ -44,7 +44,7 @@ The AASIST3 model consists of several key components:
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/AASIST3.git
+git clone https://github.com/mtuciru/AASIST3.git
 cd AASIST3
 pip install -r requirements.txt
 ```
